@@ -1,0 +1,51 @@
+version: 0.0
+os: linux
+files:
+  - source: /app
+    destination: /opt/bitnami/projs/my-tasks/app/
+  - source: /artisan
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /bootstrap
+    destination: /opt/bitnami/projs/my-tasks/bootstrap/
+  - source: /config
+    destination: /opt/bitnami/projs/my-tasks/config/
+  - source: /database
+    destination: /opt/bitnami/projs/my-tasks/database/
+  - source: /public
+    destination: /opt/bitnami/projs/my-tasks/public/
+  - source: /resources
+    destination: /opt/bitnami/projs/my-tasks/resources/
+  - source: /routes
+    destination: /opt/bitnami/projs/my-tasks/routes/
+  - source: /storage
+    destination: /opt/bitnami/projs/my-tasks/storage/
+  - source: /tests
+    destination: /opt/bitnami/projs/my-tasks/tests/
+  - source: /composer.json
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /composer.lock
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /package.json
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /phpunit.xml
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /postcss.config.js
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /tailwind.config.js
+    destination: /opt/bitnami/projs/my-tasks/
+  - source: /vite.config.js
+    destination: /opt/bitnami/projs/my-tasks/
+file_exists_behavior: OWERWRITE
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 300
+  ValidateService:
+    - location: scripts/validate_service.sh
+      timeout: 300
